@@ -14,7 +14,22 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
         cy.get('[id="search-input"]').type(target);
         cy.get('[id="searchSubmit"]').click();
     }
-  
+    
+    saveAllVideoShown = () => {
+      cy.get('.save-video')
+        .each((button) => {
+          button.click();
+        })
+    }
+    
+    it('무드등을 검색 했을 때 무드등 영상이 잘 나타난다. ', () => {
+      search('무드등');
+
+      cy.get(".video-wrapper")
+        .should('have.length', 1);
+
+
+    })
  
 
   })
