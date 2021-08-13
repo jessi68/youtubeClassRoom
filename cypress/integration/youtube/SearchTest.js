@@ -10,10 +10,12 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
     })
 
     search = (target) => {
-        cy.get('[id="searchInput"]').type(target);
+        cy.get('[id="open-search-modal"]').click();
+        cy.get('[id="search-input"]').type(target);
         cy.get('[id="searchSubmit"]').click();
     }
   
+ 
 
   })
   
