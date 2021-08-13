@@ -16,3 +16,4 @@ $searchButton.addEventListener("click", onModalShow);
 $modalClose.addEventListener("click", onModalClose);
 
 
+app = new App();
