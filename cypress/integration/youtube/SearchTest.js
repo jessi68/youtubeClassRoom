@@ -11,11 +11,9 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
 
     search = (target) => {
         cy.get('[id="searchInput"]').type(target);
+        cy.get('[id="searchSubmit"]').click();
     }
   
-    it('엔터키를 눌렀을 때 검색 동작이 이루어진다.', () => {
-     
-    })
 
   })
   
