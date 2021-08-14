@@ -9,6 +9,8 @@ class Loading extends Component{
     render() {
         if(this.state[isLoading]) {
             this.$element.innerHTML = "<h1>로딩 중입니다.</h1>";
-        } 
+        } else{
+            this.$element.innerHTML = "";
+        }
     }
 }
