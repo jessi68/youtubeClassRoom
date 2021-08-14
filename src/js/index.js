@@ -15,5 +15,4 @@ const onModalClose = () => {
 $searchButton.addEventListener("click", onModalShow);
 $modalClose.addEventListener("click", onModalClose);
 
-
-app = new App();
+//let app = new App();
