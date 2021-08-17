@@ -1,7 +1,7 @@
 import Component from '../../base/component';
 import SearchSubmit from '../SearchSubmit';
 import SearchInput from './searchInput';
-
+import SearchResults from './SearchResults';
 // <form class="d-flex">
 //         <input type="text" class="w-100 mr-2 pl-2" placeholder="검색" />
 //         <button type="button" class="btn bg-cyan-500">검색</button>
@@ -9,7 +9,7 @@ import SearchInput from './searchInput';
 
 class Search extends Component {
   searchSubmit() {
-    this.state['keyword'] = this.searchInput.getValue();
+    this.searchResults.setKeyword(this.searchInput.getValue());
   }
 
   constructor(props) {
@@ -20,5 +20,7 @@ class Search extends Component {
     this.searchSubmit = new SearchSubmit(this.$element, 'button', {}
         , {className: 'btn bg-cyan-500',
           onclick: this.searchSubmit.bind(this)});
+    this.searchResults = new SearchResults(this.$element, 'section', {"keyword": ""});
+
   }
 }
