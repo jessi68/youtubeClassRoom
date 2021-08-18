@@ -14,10 +14,5 @@ const MAX_RESULT_NUM = 10;
         return response.json();
       }
 
-       fetch(url, {method: 'GET', mode: 'cors'}).then(async function(response)  {
-       
-              let videos = await response.json();
-             
-              requiredInfos = items;
-      })
+     
   }

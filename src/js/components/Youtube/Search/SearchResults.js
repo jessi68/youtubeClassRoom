@@ -37,13 +37,13 @@ export default class SearchResults extends Component {
 
       this.$element.innerHTML = 
       this.state["videos"].length > 0
-      ? this.state["videos"].map(({id: {channelId}, snippet: {title, channelTitle}, year, month, date}, index) =>
+      ? this.state["videos"].map(({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, index) =>
       `<article class="clip">
       <div class="preview-container">
         <iframe
           width="100%"
           height="118"
-          src="https://www.youtube.com/embed/${channelId}"
+          src="https://www.youtube.com/embed/${videoId}"
           frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
