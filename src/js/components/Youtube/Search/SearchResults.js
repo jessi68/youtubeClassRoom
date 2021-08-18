@@ -26,9 +26,9 @@ export default class SearchResults extends Component {
            let manufacturedVideos = this.manufactureVideos(videos);
            this.state["videos"] = manufacturedVideos;
            console.log(this.state["videos"]);
+           this.render();
         });
-  
-        //this.render();
+        
     }
 
     render() {
