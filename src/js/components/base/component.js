@@ -2,8 +2,9 @@
 
 export default class Component {
   constructor({$target, id, initialState = {}, props}) {
-    this.$target = $target;
+  
     this.$element = document.getElementById(id);
+    console.log(this.$element);
     this.state = initialState;
     this.props = props || {};
    

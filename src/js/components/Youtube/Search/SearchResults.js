@@ -4,7 +4,8 @@ export default class SearchResults extends Component {
     
     constructor(props) {
         super(props);
-        this.renderComponent();
+        this.updateDom();
+        this.$element.innerHTML = "<h1>검색 결과가 없습니다.</h1>"
     }
 
     setVideos(videos) {

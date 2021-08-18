@@ -8,7 +8,6 @@ export default class SearchInput extends Component {
     constructor(props) {
         super(props);
         this.renderComponent();
-        this.$target.appendChild(this.$element);
     }
 
     render() {
