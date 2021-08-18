@@ -6,7 +6,7 @@ const MAX_RESULT_NUM = 10;
   export const getVideos = async (keyWord) => {
       const url = `${YOU_TUBE_URL_ENDPOINT}&part=snippet&
       q=${encodeURI(keyWord)}
-      &maxResults=${MAX_RESULT_NUM}&key=${PERSONAL_KEY}`;
+      &maxResults=${MAX_RESULT_NUM}&videoEmbeddable=true&type=video&key=${PERSONAL_KEY}`;
       
       const response = await fetch(url, {method: 'GET', mode: 'cors'});
 
