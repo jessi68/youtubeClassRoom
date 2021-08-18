@@ -6,7 +6,7 @@ export default class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.updateDom();
-        this.$element.innerHTML = "<h1> 검색 결과가 없습니다.</h1>"
+       
     }
 
     manufactureVideos = (videos) => {
@@ -68,7 +68,8 @@ export default class SearchResults extends Component {
         </div>
       </div>
     </article>
-      `).join("")   : "<h1>검색 결과가 없습니다.</h1>";
+      `).join("")   : `<h1>검색 결과가 없습니다.</h1>
+                       <img src="src/images/status/not_found.png">`;
     }
 
 }
