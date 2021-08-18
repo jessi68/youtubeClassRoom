@@ -1,4 +1,4 @@
-import Component from "../base/component";
+import Component from "./base/component";
 
 class Loading extends Component{
     constructor(...props) {

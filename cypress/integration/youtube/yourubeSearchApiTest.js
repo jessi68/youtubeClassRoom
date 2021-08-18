@@ -15,6 +15,7 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
       getVideos("무드등").then(async (result) => {
          searchedVideos = result;
          cy.get(searchedVideos).should('be.gt', 0);
+         
       });
      
 

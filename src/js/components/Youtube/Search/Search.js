@@ -1,3 +1,4 @@
+import { getVideos } from '../../../api/youtubeApi';
 import Component from '../../base/component';
 import SearchSubmit from '../SearchSubmit';
 import SearchInput from './searchInput';
@@ -8,8 +9,9 @@ import SearchResults from './SearchResults';
 //       </form>
 
 class Search extends Component {
+
   searchSubmit() {
-    this.searchResults.setKeyword(this.searchInput.getValue());
+    this.searchResults.setVideos(getVideos(this.searchInput.getValue()));
   }
 
   constructor(props) {
@@ -20,7 +22,8 @@ class Search extends Component {
     this.searchSubmit = new SearchSubmit(this.$element, 'button', {}
         , {className: 'btn bg-cyan-500',
           onclick: this.searchSubmit.bind(this)});
-    this.searchResults = new SearchResults(this.$element, 'section', {"keyword": ""});
+    this.searchResults = new SearchResults(this.$element, 'section', {"videos": ""},
+         {className: "video-wrapper"});
 
   }
 }
