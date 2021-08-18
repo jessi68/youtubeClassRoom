@@ -1,4 +1,4 @@
-import Component from "../../base/component";
+import Component from "../../base/component.js";
 
 export default class SearchResults extends Component {
     
@@ -13,7 +13,8 @@ export default class SearchResults extends Component {
     }
 
     render() {
-       videos.foreach((video) => {
+      console.log(this.state);
+       this.state["videos"].forEach((video) => {
            this.$element.innerHTML += `<article class="clip">
            <div class="preview-container">
              <iframe

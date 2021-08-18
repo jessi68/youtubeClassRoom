@@ -1,9 +1,9 @@
 
 
 export default class Component {
-  constructor({$target, nodeName = 'div', initialState = {}, props}) {
+  constructor({$target, id, initialState = {}, props}) {
     this.$target = $target;
-    this.$element = document.createElement(nodeName);
+    this.$element = document.getElementById(id);
     this.state = initialState;
     this.props = props || {};
    

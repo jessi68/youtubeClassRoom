@@ -1,29 +1,30 @@
-import { getVideos } from '../../../api/youtubeApi';
-import Component from '../../base/component';
-import SearchSubmit from '../SearchSubmit';
-import SearchInput from './searchInput';
-import SearchResults from './SearchResults';
+import { getVideos } from '../../../api/youtubeApi.js';
+import Component from '../../base/component.js';
+import SearchSubmit from '../SearchSubmit.js';
+import SearchInput from './searchInput.js';
+import SearchResults from './SearchResults.js';
 // <form class="d-flex">
 //         <input type="text" class="w-100 mr-2 pl-2" placeholder="검색" />
 //         <button type="button" class="btn bg-cyan-500">검색</button>
 //       </form>
 
-class Search extends Component {
+export class Search{
 
   searchSubmit() {
     this.searchResults.setVideos(getVideos(this.searchInput.getValue()));
   }
 
-  constructor(props) {
-    super(props);
+  constructor($element) {
+    this.$element = $element;
     this.state = {'keyword': ''};
-    this.searchInput = new SearchInput(this.$element, 'input', {}
-        , {className: 'w-100 mr-2 pl-2'});
-    this.searchSubmit = new SearchSubmit(this.$element, 'button', {}
-        , {className: 'btn bg-cyan-500',
+    this.searchInput = new SearchInput({$target: this.$element, 
+      id: 'search-input', initialState: {}});
+    this.searchSubmit = new SearchSubmit({$target: this.$element, 
+      id: 'submit-search', initialState : {},
           onclick: this.searchSubmit.bind(this)});
-    this.searchResults = new SearchResults(this.$element, 'section', {"videos": ""},
-         {className: "video-wrapper"});
+    this.searchResults = new SearchResults({$target: this.$element, 
+      id: 'search-results', initialState: {"videos": []},
+      className: "video-wrapper"});
 
   }
 }

@@ -1,15 +1,17 @@
 import Component from "../base/component.js";
+import { Search } from "./Search/Search.js";
 
 export class Modal {
-    constructor({className}) {
+    constructor({className, innerClassName}) {
         this.$modal = document.querySelector(className);
-
+        this.$modalInner = document.querySelector(innerClassName);
+        this.$search = new Search(this.$modalInner);
     }
 
   
     onModalShow = () => {
         this.$modal.classList.add("open");
-        console.log(this.$modal);
+        
     }
 
     onModalClose = () => {

@@ -1,8 +1,8 @@
-import Component from "../base/component";
+import Component from "../base/component.js";
 
 export default class SearchSubmit extends Component {
 
-    constructor() {
+    constructor(props) {
         super(props);
         this.renderComponent();
         this.$target.appendChild(this.$element);
