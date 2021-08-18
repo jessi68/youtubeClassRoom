@@ -1,4 +1,3 @@
-import { getVideos } from '../../../api/youtubeApi.js';
 import Component from '../../base/component.js';
 import SearchSubmit from '../SearchSubmit.js';
 import SearchInput from './searchInput.js';
@@ -10,8 +9,9 @@ import SearchResults from './SearchResults.js';
 
 export class Search{
 
-  searchSubmit() {
-    this.searchResults.setVideos(getVideos(this.searchInput.getValue()));
+  search() {
+    console.log("ddddd");
+    this.searchResults.setVideos(this.searchInput.getKeyword());
   }
 
   constructor($element) {
@@ -21,10 +21,9 @@ export class Search{
       id: 'search-input', initialState: {}});
     this.searchSubmit = new SearchSubmit({$target: this.$element, 
       id: 'submit-search', initialState : {},
-          onclick: this.searchSubmit.bind(this)});
+          onclick: this.search.bind(this)});
     this.searchResults = new SearchResults({$target: this.$element, 
-      id: 'search-results', initialState: {"videos": []},
-      className: "video-wrapper"});
+      id: 'search-results', initialState: {"videos": []}});
 
   }
 }

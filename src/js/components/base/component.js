@@ -1,7 +1,7 @@
 
 
 export default class Component {
-  constructor({$target, id, initialState = {}, props}) {
+  constructor({$target, id, initialState = {}, ...props}) {
   
     this.$element = document.getElementById(id);
     console.log(this.$element);
@@ -23,7 +23,7 @@ export default class Component {
   }
 
   updateDom() {
- 
+    console.log(this.props);  
     Object.entries(this.props).forEach(([key, property]) => {
       
       if (this.isEventType(key)) {

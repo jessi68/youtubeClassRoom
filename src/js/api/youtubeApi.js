@@ -7,19 +7,17 @@ const MAX_RESULT_NUM = 10;
       const url = `${YOU_TUBE_URL_ENDPOINT}&part=snippet&
       q=${encodeURI(keyWord)}
       &maxResults=${MAX_RESULT_NUM}&key=${PERSONAL_KEY}`;
+      
+      const response = await fetch(url, {method: 'GET', mode: 'cors'});
 
-      fetch(url).then(function(response)  {
-          if(response.ok) {
-              let items =  response.json()["items"];
-              items.forEach((item) => {
-                let publishTime = item["snippet"]["publishTime"];
-                item["year"] = publishTime.substr(0, 4);
-                item["month"] = publishTime.substr(5, 2);
-                item["date"] = publishTime(8, 2);
-              })
+      if(response.ok) {
+        return response.json();
+      }
 
-              return items;
-          }
-          
+       fetch(url, {method: 'GET', mode: 'cors'}).then(async function(response)  {
+       
+              let videos = await response.json();
+             
+              requiredInfos = items;
       })
   }

@@ -13,7 +13,7 @@ export default class SearchInput extends Component {
     render() {
     }
 
-    getValue() {
+    getKeyword() {
         return this.$element.value;
     }
 }
