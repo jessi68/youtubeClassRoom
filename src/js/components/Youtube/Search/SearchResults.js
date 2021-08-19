@@ -25,20 +25,17 @@ export default class SearchResults extends Component {
         getVideos(keyword).then(async (videos) => {
            let manufacturedVideos = this.manufactureVideos(videos);
            this.state["videos"] = [...this.state["videos"], ...manufacturedVideos];
-           console.log(this.state["videos"]);
            this.render();
         });
         
     }
 
     render() {
-      console.log(this.state);
-      console.log(this.state["videos"]);
-
+      
       this.$element.innerHTML = 
       this.state["videos"].length > 0
       ? this.state["videos"].map(({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, index) =>
-      `<article class="clip" id=${videoId}>
+      `<article class="clip" id=${index}>
       <div class="preview-container">
         <iframe
           width="100%"

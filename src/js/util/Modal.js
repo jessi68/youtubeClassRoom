@@ -1,5 +1,5 @@
-import Component from "../base/component.js";
-import { Search } from "./Search/Search.js";
+import Component from "../components/base/component.js";
+import { Search } from "../components/Youtube/Search/Search.js";
 
 export class Modal {
     constructor({className, innerClassName}) {
@@ -7,7 +7,6 @@ export class Modal {
         this.$modalInner = document.querySelector(innerClassName);
         this.$search = new Search(this.$modalInner);
     }
-
   
     onModalShow = () => {
         this.$modal.classList.add("open");

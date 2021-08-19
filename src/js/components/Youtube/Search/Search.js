@@ -10,7 +10,6 @@ import SearchResults from './SearchResults.js';
 export class Search{
 
   search() {
-    console.log("ddddd");
     this.searchResults.setVideos(this.searchInput.getKeyword());
   }
 

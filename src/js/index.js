@@ -1,4 +1,4 @@
-import { Modal } from "./components/Youtube/Modal.js";
+import { Modal } from "./util/Modal.js";
 
 
 const $searchButton = document.querySelector("#search-button");
@@ -10,7 +10,3 @@ const $modalClose = document.querySelector(".modal-close");
 $searchButton.addEventListener("click", modal.onModalShow);
 $modalClose.addEventListener("click", modal.onModalClose);
 
-//let app = new App();
-
-// let app = new App(document.getElementsByTagName("body")[0], 'div',
-// {}, {className: 'app'});
