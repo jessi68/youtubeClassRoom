@@ -10,7 +10,8 @@ import SearchResults from './SearchResults.js';
 
 export class Search{
 
-  search() {
+  search(event) {
+    event.preventDefault();
     this.state['keyword'] = this.searchInput.getKeyword();
     this.searchResults.setVideos(this.state['keyword']); 
   }
