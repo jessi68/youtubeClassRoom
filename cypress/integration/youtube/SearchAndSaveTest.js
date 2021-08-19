@@ -24,7 +24,8 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
     
     it('무드등을 검색 하고 스크롤을 끝까지 내렸을 때 다음 영상들이 잘 불러와진다. ', () => {
       search('무드등');
-      cy.scrollTo('bottom');
+      cy.wait(5000);
+      cy.get('div.modal').scrollTo('bottom');
       cy.get('article')
          .its('length')
          .should('eq', 20);
