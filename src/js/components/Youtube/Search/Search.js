@@ -11,6 +11,7 @@ export class Search{
 
   search() {
     this.searchResults.setVideos(this.searchInput.getKeyword());
+    
   }
 
   
@@ -25,6 +26,7 @@ export class Search{
           onclick: this.search.bind(this)});
     this.searchResults = new SearchResults({$target: this.$element, 
       id: 'search-results', initialState: {"videos": [], "nextPageToken": ""}});
+    
 
   }
 }

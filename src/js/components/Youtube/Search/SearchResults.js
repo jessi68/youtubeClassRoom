@@ -31,7 +31,8 @@ export default class SearchResults extends Component {
     }
 
     saveVideo = (videoId, video, saveButton) => {
-      localStorage.setItem(videoId, JSON.stringify(video));
+      saveItem(videoId, JSON.stringify(video));
+      document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItem()}`;
       saveButton.remove();
 
     }
@@ -66,7 +67,7 @@ export default class SearchResults extends Component {
             <p>${year}년 ${month}월 ${date}일</p>
           </div>
           <div class="d-flex justify-end">
-            <button class="save-video" onㅊlick=${(event) => this.saveVideo(videoId, this.state["videos"][index], event.target)}>⬇️ 저장</button>
+            <button class="save-video" onclick=${(event) => this.saveVideo(videoId, this.state["videos"][index], event.target)}>⬇️ 저장</button>
           </div>
         </div>
       </div>
