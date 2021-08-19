@@ -22,12 +22,18 @@ export default class SearchResults extends Component {
 
     async setVideos(keyword) {
        this.$element.innerHTML = "<h1>로딩 중입니다.</h1>";
-        getVideos(keyword).then(async (videos) => {
+        getVideos(keyword, this.state["nextPageToken"]).then(async (videos) => {
            let manufacturedVideos = this.manufactureVideos(videos);
            this.state["videos"] = [...this.state["videos"], ...manufacturedVideos];
+           this.state["nextPageToken"] = this.state["videos"]["nextPageToken"];
            this.render();
-        });
-        
+        });        
+    }
+
+    saveVideo = (videoId, video, saveButton) => {
+      localStorage.setItem(videoId, JSON.stringify(video));
+      saveButton.remove();
+
     }
 
     render() {
@@ -60,7 +66,7 @@ export default class SearchResults extends Component {
             <p>${year}년 ${month}월 ${date}일</p>
           </div>
           <div class="d-flex justify-end">
-            <button class="save-video">⬇️ 저장</button>
+            <button class="save-video" onㅊlick=${(event) => this.saveVideo(videoId, this.state["videos"][index], event.target)}>⬇️ 저장</button>
           </div>
         </div>
       </div>

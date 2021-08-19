@@ -1,22 +1,32 @@
 import Component from "../components/base/component.js";
 import { Search } from "../components/Youtube/Search/Search.js";
+import isScrollAtBottom from "./dom.js";
 
 export class Modal {
     constructor({className, innerClassName}) {
         this.$modal = document.querySelector(className);
         this.$modalInner = document.querySelector(innerClassName);
         this.$search = new Search(this.$modalInner);
+        this.$modalInner.addEventListener("scroll", this.onModalScrolled);
     }
   
-    onModalShow = () => {
+    onShow = () => {
         this.$modal.classList.add("open");
         
     }
 
-    onModalClose = () => {
+    onClose = () => {
         this.$modal.classList.remove("open");
-      };
+    };
 
+
+    onModalScrolled = async (event) => {
+      if(isScrollAtBottom(event.target)) {
+        console.log("dd");
+        this.$search.search();
+      }
+     
+    }
 
 }
 

@@ -13,6 +13,8 @@ export class Search{
     this.searchResults.setVideos(this.searchInput.getKeyword());
   }
 
+  
+
   constructor($element) {
     this.$element = $element;
     this.state = {'keyword': ''};
@@ -22,7 +24,7 @@ export class Search{
       id: 'submit-search', initialState : {},
           onclick: this.search.bind(this)});
     this.searchResults = new SearchResults({$target: this.$element, 
-      id: 'search-results', initialState: {"videos": []}});
+      id: 'search-results', initialState: {"videos": [], "nextPageToken": ""}});
 
   }
 }
