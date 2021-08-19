@@ -24,7 +24,7 @@ export default class SearchResults extends Component {
        this.$element.innerHTML = "<h1>로딩 중입니다.</h1>";
         getVideos(keyword).then(async (videos) => {
            let manufacturedVideos = this.manufactureVideos(videos);
-           this.state["videos"] = manufacturedVideos;
+           this.state["videos"] = [...this.state["videos"], ...manufacturedVideos];
            console.log(this.state["videos"]);
            this.render();
         });
@@ -38,7 +38,7 @@ export default class SearchResults extends Component {
       this.$element.innerHTML = 
       this.state["videos"].length > 0
       ? this.state["videos"].map(({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, index) =>
-      `<article class="clip">
+      `<article class="clip" id=${videoId}>
       <div class="preview-container">
         <iframe
           width="100%"

@@ -9,24 +9,26 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
       cy.visit('http://127.0.0.1:5500/')
     })
 
-    search = (target) => {
-        cy.get('[id="open-search-modal"]').click();
+    let search = (target) => {
+        cy.get('[id="search-button"]').click();
         cy.get('[id="search-input"]').type(target);
-        cy.get('[id="searchSubmit"]').click();
+        cy.get('[id="submit-search"]').click();
     }
     
-    saveAllVideoShown = () => {
+    let saveAllVideoShown = () => {
       cy.get('.save-video')
         .each((button) => {
           button.click();
         })
     }
     
-    it('무드등을 검색 했을 때 무드등 영상이 잘 나타난다. ', () => {
+    it('무드등을 검색 하고 스크롤을 끝까지 내렸을 때 다음 영상들이 잘 불러와진다. ', () => {
       search('무드등');
-
-      cy.get(".video-wrapper")
-        .should('have.length', 1);
+      cy.scrollTo('bottom');
+      cy.get('article')
+         .its('length')
+         .should('eq', 20);
+    
 
 
     })
