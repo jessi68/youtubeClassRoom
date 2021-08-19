@@ -11,18 +11,17 @@ export class Modal {
     }
   
     onShow = () => {
-        this.$modal.classList.add("open");
-        
+      this.$search.trySavePreviousKeyword();
+      this.$modal.classList.add("open");  
     }
 
     onClose = () => {
         this.$modal.classList.remove("open");
-    };
 
+    };
 
     onModalScrolled = async (event) => {
       if(isScrollAtBottom(event.target)) {
-        console.log("dd");
         this.$search.search();
       }
      

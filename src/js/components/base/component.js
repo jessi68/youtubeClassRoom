@@ -1,10 +1,8 @@
 
 
 export default class Component {
-  constructor({$target, id, initialState = {}, ...props}) {
-  
+  constructor({id, initialState = {}, ...props}) {
     this.$element = document.getElementById(id);
-    console.log(this.$element);
     this.state = initialState;
     this.props = props || {};
    
