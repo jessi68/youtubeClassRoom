@@ -2,16 +2,16 @@ let savedItem = 0;
 const MAX_ITEM = 100;
 
 let isPossibleForSave = () => {
-    return saveItem <= MAX_ITEM;
+    return savedItem <= MAX_ITEM;
 }
 
-let getSavedItem = () => {
-    return saveItem;
+export const getSavedItem = () => {
+    return savedItem;
 }
 
-let saveItem = (id, content) => {
+export const saveItem = (id, content) => {
     if(isPossibleForSave()) {
-    localStorage.setItem(id, content);
-    saveItem++;
+        localStorage.setItem(id, content);
+        savedItem++;
     }
 }

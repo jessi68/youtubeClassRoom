@@ -1,4 +1,5 @@
 import { getVideos } from "../../../api/youtubeApi.js";
+import { getSavedItem, saveItem } from "../../../util/Storage.js";
 import Component from "../../base/component.js";
 
 export default class SearchResults extends Component {
@@ -27,6 +28,17 @@ export default class SearchResults extends Component {
            this.state["videos"] = [...this.state["videos"], ...manufacturedVideos];
            this.state["nextPageToken"] = this.state["videos"]["nextPageToken"];
            this.render();
+   
+           this.$element.childNodes.forEach((childNode, index) => {
+             let video = this.state["videos"][index];
+              childNode.addEventListener("click", function(event){
+                event.preventDefault();
+                if(event.target.className === "save-video") {
+                  this.saveVideo(video["id"]["videoId"], video, event.target);
+                }
+              }.bind(this))
+           });
+
         });        
     }
 
@@ -67,7 +79,7 @@ export default class SearchResults extends Component {
             <p>${year}년 ${month}월 ${date}일</p>
           </div>
           <div class="d-flex justify-end">
-            <button class="save-video" onclick='${(event) => this.saveVideo(videoId, this.state["videos"][index], event.target)}'>⬇️ 저장</button>
+            <button class="save-video">⬇️ 저장</button>
           </div>
         </div>
       </div>

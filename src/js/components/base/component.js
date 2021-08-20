@@ -21,7 +21,7 @@ export default class Component {
   }
 
   updateDom() {
-    console.log(this.props);  
+    
     Object.entries(this.props).forEach(([key, property]) => {
       
       if (this.isEventType(key)) {
