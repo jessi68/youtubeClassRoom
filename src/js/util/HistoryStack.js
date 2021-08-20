@@ -25,13 +25,14 @@ export default class HistoryStack extends Component {
     }
 
     render() {
-        this.$element.innerHTML = this.state["histories"].length > 0
-        ?  this.state["histories"].splice().reverse().map((history, index) => {
-            `<p id=${"history" + index}>${history}</p>`
-        })
-        : "최근 검색어가 없습니다";
+        let histories =  JSON.parse(JSON.stringify(this.state["histories"]));
+         histories.reverse();
+        this.$element.innerHTML += histories.length > 0
+        ?  histories.map((history, index) => 
+          `<p id=${"history" + index}>${history}</p>`
+        ).join("")
+        : "없습니다";
 
-        //this.state[stack][]
     }
 
 
