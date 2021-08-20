@@ -67,7 +67,7 @@ export default class SearchResults extends Component {
             <p>${year}년 ${month}월 ${date}일</p>
           </div>
           <div class="d-flex justify-end">
-            <button class="save-video" onclick=${(event) => this.saveVideo(videoId, this.state["videos"][index], event.target)}>⬇️ 저장</button>
+            <button class="save-video" onclick='${(event) => this.saveVideo(videoId, this.state["videos"][index], event.target)}'>⬇️ 저장</button>
           </div>
         </div>
       </div>

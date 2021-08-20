@@ -11,8 +11,3 @@ $searchButton.addEventListener("click", modal.onShow);
 $modalClose.addEventListener("click", modal.onClose);
 
 
-let a = {
-    "aa": "bb"
-}
-
-console.log(a[aa])

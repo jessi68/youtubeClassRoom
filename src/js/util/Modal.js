@@ -1,6 +1,6 @@
 import Component from "../components/base/component.js";
 import { Search } from "../components/Youtube/Search/Search.js";
-import isScrollAtBottom from "./dom.js";
+import isScrollAtBottom from "./scroll.js";
 
 export class Modal {
     constructor({className, innerClassName}) {
