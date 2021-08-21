@@ -10,11 +10,12 @@ import SearchResults from './SearchResults.js';
 
 export class Search{
 
-  search(event) {
-    event.preventDefault();
+  search() {
+    this.searchResults.setEmpty();
     this.state['keyword'] = this.searchInput.getKeyword();
     this.searchResults.setVideos(this.state['keyword']);
     this.saveKeyword(); 
+    this.searchInput.setTextEmpty();
   }
 
   saveKeyword() {

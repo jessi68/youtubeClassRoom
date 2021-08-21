@@ -27,6 +27,7 @@ export default class SearchResults extends Component {
            let manufacturedVideos = this.manufactureVideos(videos);
            this.state["videos"] = [...this.state["videos"], ...manufacturedVideos];
            this.state["nextPageToken"] = this.state["videos"]["nextPageToken"];
+           console.log(manufacturedVideos);
            this.render();
    
            this.$element.childNodes.forEach((childNode, index) => {
@@ -47,6 +48,10 @@ export default class SearchResults extends Component {
       document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItem()}`;
       saveButton.remove();
 
+    }
+
+    setEmpty = () => {
+      this.state["videos"] = [];
     }
 
     render() {

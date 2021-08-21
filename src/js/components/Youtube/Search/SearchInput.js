@@ -16,4 +16,8 @@ export default class SearchInput extends Component {
     getKeyword() {
         return this.$element.value;
     }
+
+    setTextEmpty() {
+        this.$element.value = "";
+    }
 }

@@ -7,7 +7,7 @@ export class Modal {
         this.$modal = document.querySelector(className);
         this.$modalInner = document.querySelector(innerClassName);
         this.$search = new Search(this.$modalInner);
-        this.$modalInner.addEventListener("scroll", this.onModalScrolled);
+        this.$modal.addEventListener("scroll", this.onModalScrolled);
     }
   
     onShow = () => {
@@ -19,7 +19,8 @@ export class Modal {
 
     };
 
-    onModalScrolled = async (event) => {
+    onModalScrolled = (event) => {
+      event.preventDefault();
       if(isScrollAtBottom(event.target)) {
         this.$search.search();
       }
