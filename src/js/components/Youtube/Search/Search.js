@@ -13,10 +13,11 @@ export class Search{
   search(event) {
     event.preventDefault();
     this.state['keyword'] = this.searchInput.getKeyword();
-    this.searchResults.setVideos(this.state['keyword']); 
+    this.searchResults.setVideos(this.state['keyword']);
+    this.saveKeyword(); 
   }
 
-  trySavePreviousKeyword() {
+  saveKeyword() {
     if(this.state["keyword"] != "") {
       this.recentSearchedWords.tryAddRecentHistory(this.state['keyword']);
       this.state["keyword"] = "";

@@ -20,21 +20,18 @@ export default class HistoryStack extends Component {
         if(!this.isPossibleToAdd(keyword)) {
             this.removeMostOld();
         }
+        let index = this.state["currentLength"];
+        this.addRecentHistory(keyword);
+        this.addHistoryToView(keyword, this.state["currentLength"], index);
+    }
+
+    addRecentHistory = (keyword) => {
         this.state["histories"].push(keyword);
-        this.render();
+        this.state["currentLength"] += 1;
     }
 
-    render() {
-        let histories =  JSON.parse(JSON.stringify(this.state["histories"]));
-         histories.reverse();
-        this.$element.innerHTML += histories.length > 0
-        ?  histories.map((history, index) => 
-          `<p id=${"history" + index}>${history}</p>`
-        ).join("")
-        : "없습니다";
-
+    addHistoryToView(keyword, index) {
+        this.$element.innerHTML += `${keyword} &nbsp`;
     }
-
-
 
 }

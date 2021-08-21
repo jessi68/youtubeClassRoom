@@ -11,7 +11,6 @@ export class Modal {
     }
   
     onShow = () => {
-      this.$search.trySavePreviousKeyword();
       this.$modal.classList.add("open");  
     }
 
