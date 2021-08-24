@@ -9,7 +9,7 @@ import SearchResults from './SearchResults.js';
 //         <button type="button" class="btn bg-cyan-500">검색</button>
 //       </form>
 
-export class SearchMeditator{
+export class YoutubeMeditator{
 
   search() {
     this.searchResults.setEmpty();

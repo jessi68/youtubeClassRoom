@@ -70,7 +70,7 @@ export default class SearchResults extends Component {
       this.$element.innerHTML = 
       this.state["videos"].length > 0
       ? this.state["videos"].map((youtube, index) =>
-       youtubeFrame(youtube, saveButton(), index)
+       youtubeFrame(youtube, saveButton(), index, 'results')
       ).join("")   : `<h1>검색 결과가 없습니다.</h1>
                        <img src="src/images/status/not_found.png">`;
     }

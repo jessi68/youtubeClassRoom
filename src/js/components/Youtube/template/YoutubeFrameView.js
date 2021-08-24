@@ -8,8 +8,8 @@ export const saveButton = () => {
 
 
 
-export const youtubeFrame = ({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, metaDataView, index) => {
-    return `<article class="clip" id=${index}>
+export const youtubeFrame = ({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, metaDataView, index, keyWord) => {
+    return `<article class="clip" id=${ keyWord + index}>
     <div class="preview-container">
       <iframe
         width="100%"
