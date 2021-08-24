@@ -13,7 +13,7 @@ export class Search{
   search() {
     this.searchResults.setEmpty();
     this.state['keyword'] = this.searchInput.getKeyword();
-    this.searchResults.setVideos(this.state['keyword']);
+    this.searchResults.addVideosBy(this.state['keyword']);
     this.saveKeyword(); 
     this.searchInput.setTextEmpty();
   }
@@ -38,6 +38,5 @@ export class Search{
     this.recentSearchedWords = new HistoryStack({
         id:"recent-keyword", initialState: {"maxKeywordNumber" : 3}
     });
-
   }
 }
