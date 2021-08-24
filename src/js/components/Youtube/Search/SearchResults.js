@@ -8,7 +8,11 @@ export default class SearchResults extends Component {
     constructor(props) {
         super(props);
         this.updateDom();
-       
+        this.observers = [];
+    }
+
+    addObserver(observer) {
+      this.observers.push(observer);
     }
 
     manufactureVideos = (videos) => {
@@ -43,11 +47,18 @@ export default class SearchResults extends Component {
         });        
     }
 
+    notifyAllObservers = (video)  => {
+      this.observers.forEach((observer) => {
+        console.log(observer)
+         observer.observe(video);
+      })
+    }
+
     saveVideo = (videoId, video, saveButton) => {
       saveItem(videoId, JSON.stringify(video));
       document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItemNumber()}`;
+      this.notifyAllObservers(video);
       saveButton.remove();
-
     }
 
     setEmpty = () => {

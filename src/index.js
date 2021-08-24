@@ -3,6 +3,8 @@ import { Modal } from "./js/util/Modal.js";
 import { getSavedItemNumber } from "./js/util/Storage.js";
 
 
+
+
 const $searchButton = document.querySelector("#search-button");
 
 
@@ -12,5 +14,3 @@ const $modalClose = document.querySelector(".modal-close");
 $searchButton.addEventListener("click", modal.onShow);
 $modalClose.addEventListener("click", modal.onClose);
 
-
-const savedVideos = new SavedVideos({id: "saved-video",  initialState: {"savedNumber":getSavedItemNumber()}});

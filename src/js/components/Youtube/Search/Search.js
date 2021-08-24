@@ -1,5 +1,6 @@
 import HistoryStack from '../../../util/HistoryStack.js';
-import Component from '../../base/component.js';
+import { getSavedItemNumber } from '../../../util/Storage.js';
+import { SavedVideos } from '../SavedVideos/SavedVideos.js';
 import SearchSubmit from '../SearchSubmit.js';
 import SearchInput from './searchInput.js';
 import SearchResults from './SearchResults.js';
@@ -8,7 +9,7 @@ import SearchResults from './SearchResults.js';
 //         <button type="button" class="btn bg-cyan-500">검색</button>
 //       </form>
 
-export class Search{
+export class SearchMeditator{
 
   search() {
     this.searchResults.setEmpty();
@@ -24,6 +25,7 @@ export class Search{
       this.state["keyword"] = "";
     }
   }
+  
 
   constructor($element) {
     this.$element = $element;
@@ -38,5 +40,8 @@ export class Search{
     this.recentSearchedWords = new HistoryStack({
         id:"recent-keyword", initialState: {"maxKeywordNumber" : 3}
     });
+    
+    this.savedVideos = new SavedVideos({id: "saved-video",  initialState: {"savedNumber":getSavedItemNumber()}});
+    this.searchResults.addObserver(this.savedVideos);
   }
 }

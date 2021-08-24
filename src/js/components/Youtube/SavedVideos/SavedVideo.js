@@ -5,10 +5,9 @@ export default class SavedVideo {
 
     constructor(video) {
         this.video = video;
-        this.showed = false;
+        this.isSeenByUser = false;
         this.deleted = false;
     }
-
 
     metaDataView() {
         return  `<div>

@@ -1,12 +1,12 @@
 import Component from "../components/base/component.js";
-import { Search } from "../components/Youtube/Search/Search.js";
+import { SearchMeditator } from "../components/Youtube/Search/Search.js";
 import isScrollAtBottom from "./scroll.js";
 
 export class Modal {
     constructor({className, innerClassName}) {
         this.$modal = document.querySelector(className);
         this.$modalInner = document.querySelector(innerClassName);
-        this.$search = new Search(this.$modalInner);
+        this.$search = new SearchMeditator(this.$modalInner);
         this.$modal.addEventListener("scroll", this.onModalScrolled);
     }
   
@@ -18,6 +18,8 @@ export class Modal {
         this.$modal.classList.remove("open");
 
     };
+
+    
 
     onModalScrolled = (event) => {
       event.preventDefault();
