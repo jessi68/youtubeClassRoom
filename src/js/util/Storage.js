@@ -5,7 +5,7 @@ let isPossibleForSave = () => {
     return savedItem <= MAX_ITEM;
 }
 
-export const getSavedItem = () => {
+export const getSavedItemNumber = () => {
     return savedItem;
 }
 
@@ -15,3 +15,5 @@ export const saveItem = (id, content) => {
         savedItem++;
     }
 }
+
+

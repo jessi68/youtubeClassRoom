@@ -1,5 +1,5 @@
 import { getVideos } from "../../../api/youtubeApi.js";
-import { getSavedItem, saveItem } from "../../../util/Storage.js";
+import { getSavedItemNumber, saveItem } from "../../../util/Storage.js";
 import Component from "../../base/component.js";
 import { saveButton, youtubeFrame } from "../template/YoutubeFrameView.js";
 
@@ -45,7 +45,7 @@ export default class SearchResults extends Component {
 
     saveVideo = (videoId, video, saveButton) => {
       saveItem(videoId, JSON.stringify(video));
-      document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItem()}`;
+      document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItemNumber()}`;
       saveButton.remove();
 
     }
@@ -59,7 +59,7 @@ export default class SearchResults extends Component {
       this.$element.innerHTML = 
       this.state["videos"].length > 0
       ? this.state["videos"].map((youtube, index) =>
-       youtubeFrame(youtube, saveButton, index)
+       youtubeFrame(youtube, saveButton(), index)
       ).join("")   : `<h1>검색 결과가 없습니다.</h1>
                        <img src="src/images/status/not_found.png">`;
     }

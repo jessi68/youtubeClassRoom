@@ -6,6 +6,8 @@ export const saveButton = () => {
            `
 }
 
+
+
 export const youtubeFrame = ({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, metaDataView, index) => {
     return `<article class="clip" id=${index}>
     <div class="preview-container">
@@ -31,7 +33,7 @@ export const youtubeFrame = ({id: {videoId}, snippet: {title, channelTitle}, yea
         <div class="meta">
           <p>${year}년 ${month}월 ${date}일</p>
         </div>
-         ${metaDataView()}
+         ${metaDataView}
       </div>
     </div>
   </article>`
