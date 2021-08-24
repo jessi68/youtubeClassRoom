@@ -1,5 +1,5 @@
 const YOU_TUBE_URL_ENDPOINT =  "https://content.googleapis.com/youtube/v3/search?";
-const PERSONAL_KEY = "AIzaSyCZkHKRw9sty0-fxP_JstoiOOJzey-bc_Q";
+const PERSONAL_KEY
 const MAX_RESULT_NUM = 10;
 
 const DEFAULT_URL_PARAM = {
