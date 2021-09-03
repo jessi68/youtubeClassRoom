@@ -13,17 +13,26 @@ const DEFAULT_URL_PARAM = {
 
 export const getVideos = async (keyWord, nextPageToken) => {
       const url = new URL(YOU_TUBE_URL_ENDPOINT);
+      console.log(keyWord);
+      console.log(nextPageToken);
       let urlSearchParam = {...DEFAULT_URL_PARAM, maxResults: MAX_RESULT_NUM,  pageToken: nextPageToken || "",
             q: keyWord,
-          order: "relevance"
+
     };
     const parameters = new URLSearchParams(urlSearchParam);
     url.search = parameters.toString();
-    const response = await fetch(url, {method: 'GET', mode: 'cors'});
+    
 
-      if(response.ok) {
-        return response.json();
+      try {
+        const response = await fetch(url, {method: 'GET', mode: 'cors'});
+        if(!response.ok) {
+           throw new Error(response.status);
+        }
+        return await response.json();
+      } catch(err)  {
+          
       }
+     
   }
 
   // {

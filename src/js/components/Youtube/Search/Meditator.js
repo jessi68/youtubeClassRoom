@@ -2,6 +2,7 @@ import HistoryStack from '../../../util/HistoryStack.js';
 import { getSavedItemNumber } from '../../../util/Storage.js';
 import { SavedVideos } from '../SavedVideos/SavedVideos.js';
 import SearchSubmit from '../SearchSubmit.js';
+import SearchFilter from './SearchFilter.js';
 import SearchInput from './searchInput.js';
 import SearchResults from './SearchResults.js';
 // <form class="d-flex">
@@ -11,12 +12,13 @@ import SearchResults from './SearchResults.js';
 
 export class YoutubeMeditator{
 
-  search() {
+  search = (event) => {
+   console.log("dd");
     this.searchResults.setEmpty();
     this.state['keyword'] = this.searchInput.getKeyword();
     this.searchResults.addVideosBy(this.state['keyword']);
     this.saveKeyword(); 
-    this.searchInput.setTextEmpty();
+    //this.searchInput.setTextEmpty();
   }
 
   saveKeyword() {
@@ -34,7 +36,7 @@ export class YoutubeMeditator{
       id: 'search-input', initialState: {}});
     this.searchSubmit = new SearchSubmit({ 
       id: 'submit-search', initialState : {},
-          onclick: this.search.bind(this)});
+          onclick: this.search});
     this.searchResults = new SearchResults({ 
       id: 'search-results', initialState: {"videos": [], "nextPageToken": ""}});
     this.recentSearchedWords = new HistoryStack({
@@ -43,5 +45,11 @@ export class YoutubeMeditator{
     
     this.savedVideos = new SavedVideos({id: "saved-video",  initialState: {"savedNumber":getSavedItemNumber()}});
     this.searchResults.addObserver(this.savedVideos);
+
+
+    this.willSeeFilter = new SearchFilter({id:"will-see", initialState: {}, onclick: this.savedVideos.showOnlyUnseenVideos});
+    this.unSeeFilter = new SearchFilter({id: "unsee", onclick: this.savedVideos.showOnlySeenVideos});
+
+
   }
 }

@@ -6,7 +6,7 @@ export class Modal {
     constructor({className, innerClassName}) {
         this.$modal = document.querySelector(className);
         this.$modalInner = document.querySelector(innerClassName);
-        this.$search = new YoutubeMeditator(this.$modalInner);
+        this.$searchMediatator = new YoutubeMeditator(this.$modalInner);
         this.$modal.addEventListener("scroll", this.onModalScrolled);
     }
   
@@ -22,7 +22,10 @@ export class Modal {
     onModalScrolled = (event) => {
       event.preventDefault();
       if(isScrollAtBottom(event.target)) {
-        this.$search.search();
+        console.log(
+          "ss"
+        );
+        this.$searchMediatator.search();
       }
      
     }

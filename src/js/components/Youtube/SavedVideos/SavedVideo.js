@@ -1,6 +1,6 @@
 import { $, addEventFunction, foundByClassName, removeSpecificClass } from "../../../util/dom.js";
+import Component from "../../base/component.js";
 import { youtubeFrame } from "../template/YoutubeFrameView.js";
-
 
 
 export default class SavedVideo {
@@ -9,27 +9,34 @@ export default class SavedVideo {
         this.video = video;
         this.metaDataId = "metaData" + index;
         this.index = index;
-        this.isSeenByUser = false;
+        this._isSeenByUser = false;
         this.deleted = false;
+        this.$isOkay = new Component({});
 
+    }
+
+    isSeenByUser = () => {
+        return this._isSeenByUser;
     }
 
     metaDataView(id) {
-        return  `<div id=${id}>
-        <span class="opacity-hover checked">✅</span>
-        <span class="opacity-hover like">👍</span>
+        return  `<label id=${id}>
+        <span class="opacity-hover checked" id=${id}>✅</span>
+        <span class="opacity-hover like" id=${id}>👍</span>
         <span class="opacity-hover comment">💬</span>
         <span class="opacity-hover trash">🗑️</span>
-      </div>`
+      </label>`
     }
 
     seenByUser = (event) => {
-        this.isSeenByUser = true;
+        this._isSeenByUser = true;
         removeSpecificClass(event.target, "opacity-hover");
+
     }
 
     deleteItself = () => {
         $("savedVideo" + this.index).remove();
+        
     }
 
     render() {
@@ -38,9 +45,12 @@ export default class SavedVideo {
 
     connectViewToFunction() {
         const metaDataParentView = $(this.metaDataId);
+        console.log(metaDataParentView);
         let checked = foundByClassName(metaDataParentView, ".checked");
         addEventFunction(checked, "click", this.seenByUser);
+        console.log(checked);
         let deleteButton = foundByClassName(metaDataParentView, ".trash");
         addEventFunction(deleteButton, "click", this.deleteItself);
+        console.log(deleteButton);
     }
 }

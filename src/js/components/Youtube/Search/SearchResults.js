@@ -49,7 +49,6 @@ export default class SearchResults extends Component {
 
     notifyAllObservers = (video)  => {
       this.observers.forEach((observer) => {
-        console.log(observer)
          observer.observe(video);
       })
     }
