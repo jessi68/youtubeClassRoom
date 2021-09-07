@@ -7,6 +7,7 @@ export default class SavedVideo {
 
     constructor(video, index) {
         this.video = video;
+        this.id= "savedVideo" + index;
         this.metaDataId = "metaData" + index;
         this.index = index;
         this._isSeenByUser = false;
@@ -21,8 +22,8 @@ export default class SavedVideo {
 
     metaDataView(id) {
         return  `<label id=${id}>
-        <span class="opacity-hover checked" id=${id}>✅</span>
-        <span class="opacity-hover like" id=${id}>👍</span>
+        <span class="opacity-hover checked">✅</span>
+        <span class="opacity-hover like">👍</span>
         <span class="opacity-hover comment">💬</span>
         <span class="opacity-hover trash">🗑️</span>
       </label>`
@@ -31,7 +32,6 @@ export default class SavedVideo {
     seenByUser = (event) => {
         this._isSeenByUser = true;
         removeSpecificClass(event.target, "opacity-hover");
-
     }
 
     deleteItself = () => {
@@ -39,16 +39,24 @@ export default class SavedVideo {
         
     }
 
-    render() {
-        return youtubeFrame(this.video, this.metaDataView(this.metaDataId), this.index,"savedVideo");
+    hideItself = () => {
+        document.getElementById(this.id).style.display = "none";
     }
 
-    connectViewToFunction() {
+    showItself = () => {
+        document.getElementById(this.id).style.display = "block";
+    }
+
+    makeNewView() {
+        return youtubeFrame(this.video, this.metaDataView(this.metaDataId), this.index,"savedVideo");
+
+    }
+
+    connectViewToFunction = () => {
         const metaDataParentView = $(this.metaDataId);
-        console.log(metaDataParentView);
+        print(metaDataParentView)
         let checked = foundByClassName(metaDataParentView, ".checked");
         addEventFunction(checked, "click", this.seenByUser);
-        console.log(checked);
         let deleteButton = foundByClassName(metaDataParentView, ".trash");
         addEventFunction(deleteButton, "click", this.deleteItself);
         console.log(deleteButton);

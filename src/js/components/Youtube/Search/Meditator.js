@@ -46,7 +46,6 @@ export class YoutubeMeditator{
     this.savedVideos = new SavedVideos({id: "saved-video",  initialState: {"savedNumber":getSavedItemNumber()}});
     this.searchResults.addObserver(this.savedVideos);
 
-
     this.willSeeFilter = new SearchFilter({id:"will-see", initialState: {}, onclick: this.savedVideos.showOnlyUnseenVideos});
     this.unSeeFilter = new SearchFilter({id: "unsee", onclick: this.savedVideos.showOnlySeenVideos});
 

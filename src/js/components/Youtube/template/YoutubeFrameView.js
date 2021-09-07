@@ -9,6 +9,10 @@ export const saveButton = () => {
 
 
 export const youtubeFrame = ({id: {videoId}, snippet: {title, channelTitle}, year, month, date}, metaDataView, index, keyWord) => {
+    // let article = document.createElement("article");
+    // article.setAttribute("id", keyWord)
+    // article.setAttribute("class", "clip");
+    // article.insertAdjacentHTML("beforeend", )
     return `<article class="clip" id=${ keyWord + index}>
     <div class="preview-container">
       <iframe

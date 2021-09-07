@@ -12,7 +12,7 @@ export class SavedVideos extends Component {
     observe(video) {
         let newVideo = new SavedVideo(video, this.state["savedNumber"]);
         this.savedVideoView.push(newVideo);
-        this.renderNewVideo(newVideo);
+        this.addNewVideo(newVideo);
     }
 
     showOnlySeenVideos = () => {
@@ -21,26 +21,40 @@ export class SavedVideos extends Component {
     }
 
     showOnlyUnseenVideos = () => {
+        console.log(this.savedVideoView);
         this.render(this.savedVideoView.filter((video) => !video.isSeenByUser()));
     }
 
-    renderNewVideo(newVideo) {
+    addNewVideo(newVideo) {
         if(this.state["savedNumber"] === 0) {
             this.$element.innerHTML = "";
         }
-        this.$element.innerHTML += newVideo.render();
+        
+        this.$element.insertAdjacentHTML('beforeend', newVideo.makeNewView());
         newVideo.connectViewToFunction();
+        console.log(this.$element);
         this.state["savedNumber"] += 1;
     }
 
-    render(videoViews = []) {
+    hideItself() {
+        this.savedVideoView.forEach((videoView) => {
+            videoView.hideItself();
+        })
+    }
 
-        this.$element.innerHTML = videoViews.length === 0 ?
-        "<h1> 영상이 없습니다.</h1>" : 
-        videoViews.map((video) => {
-             return video.render();
-        }).join("");
-        
+    render(videoViews = []) {
+        console.log(videoViews);
+        this.hideItself();
+        if(videoViews.length === 0) {
+            this.$element.innerHTML = "<h1>영상이 없습니다.</h1>";
+            return;
+        }
+
+        videoViews.forEach((video) => {
+            console.log(video);
+            video.showItself();
+        });
+   
     }
 
 }
