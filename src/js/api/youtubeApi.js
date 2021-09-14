@@ -49,14 +49,4 @@ export const getVideos = async (keyWord, nextPageToken) => {
      
   }
 
-  // {
-  //   part: "snippet",
-  //   type: "video",
-  //   maxResults:MAX_RESULT_NUM,
-  //   regionCode: "kr",
-  //   safeSearch: "strict",
-  //   pageToken: nextPageToken || "",
-  //   q: keyWord,
-  //   key: PERSONAL_KEY,
-  //   order: "relevance"
-  // }
+  

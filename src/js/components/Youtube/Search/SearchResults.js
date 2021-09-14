@@ -37,9 +37,11 @@ export default class SearchResults extends Component {
            this.$element.childNodes.forEach((childNode, index) => {
              let video = this.state["videos"][index];
               childNode.addEventListener("click", function(event){
-                event.preventDefault();
+          
                 if(event.target.className === "save-video") {
-                  this.saveVideo(video["id"]["videoId"], video, event.target);
+                  event.preventDefault();
+                  //console.log("ll");
+                   this.saveVideo(video["id"]["videoId"], video, event.target);
                 }
               }.bind(this))
            });
@@ -55,7 +57,6 @@ export default class SearchResults extends Component {
 
     saveVideo = (videoId, video, saveButton) => {
       saveItem(videoId, JSON.stringify(video));
-      print(video);
       document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItemNumber()}`;
       this.notifyAllObservers(video);
       saveButton.remove();

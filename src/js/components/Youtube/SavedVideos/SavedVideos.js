@@ -17,10 +17,12 @@ export class SavedVideos extends Component {
     }
 
     showOnlySeenVideos = () => {
+        print(this.savedVideoView);
+        print("ll");
          this.render(this.savedVideoView.filter((video) => video.isSeenByUser()));
     }
 
-    showOnlyUnseenVideos = () => {
+    showOnlyWillSeeVideos = () => {
         this.render(this.savedVideoView.filter((video) => !video.isSeenByUser()));
     }
 
@@ -40,7 +42,7 @@ export class SavedVideos extends Component {
         })
     }
 
-    render(videoViews = []) {
+    render = (videoViews = []) => {
         this.hideItself();
         if(videoViews.length === 0) {
             this.$element.innerHTML = "<h1>영상이 없습니다.</h1>";

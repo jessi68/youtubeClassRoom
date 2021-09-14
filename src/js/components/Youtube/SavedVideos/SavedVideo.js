@@ -7,14 +7,14 @@ import { youtubeFrame } from "../template/YoutubeFrameView.js";
 export default class SavedVideo {
 
     constructor(video, index) {
-        this.video = video;
-        print(video);
+        this.video = video;   
         this.id= "savedVideo" + index;
         this.metaDataId = "metaData" + index;
         this.index = index;
         this._isSeenByUser = false;
         this.deleted = false;
         this.isLiked = false;
+        //this.$comment = new Component();
     }
 
     isSeenByUser = () => {
@@ -26,7 +26,7 @@ export default class SavedVideo {
         <span class="opacity-hover checked">✅</span>
         <span class="opacity-hover like">👍</span>
         <span class="opacity-hover comment">💬</span>
-        <span class="opacity-hover trash">🗑️</span>
+        <span class="opacity-hover trash" id="trash ${id}">🗑️</span>
       </label>`
     }
 
@@ -55,16 +55,14 @@ export default class SavedVideo {
     }
 
      async rateAsLike(event) {
-        await rateVideo(this.video["id"]["videoId"]);
+        await rateVideo(this.video["id"]["videoId"], "like");
         removeSpecificClass(event.target, "opacity-hover");
         this.isLiked = true;
     }
 
     connectViewToFunction = () => {
-        print(this.video["id"]["videoId"]);
-        print("ds");
         const metaDataParentView = $(this.metaDataId);
-        print(metaDataParentView)
+
         let checked = foundByClassName(metaDataParentView, ".checked");
         addEventFunction(checked, "click", this.seenByUser);
 
@@ -73,5 +71,8 @@ export default class SavedVideo {
 
         let likeButton = foundByClassName(metaDataParentView, ".like");
         addEventFunction(likeButton, "click", this.rateAsLike.bind(this));
+
+        //let commentButton = foundByClassName(metaDataParentView, ".comment");
+        //addEventFunction(commentButton, "click", this.openCommentView.bind(this));
     }
 }
