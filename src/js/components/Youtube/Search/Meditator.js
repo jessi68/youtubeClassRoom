@@ -13,7 +13,6 @@ import SearchResults from './SearchResults.js';
 export class YoutubeMeditator{
 
   search = (event) => {
-   console.log("dd");
     this.searchResults.setEmpty();
     this.state['keyword'] = this.searchInput.getKeyword();
     this.searchResults.addVideosBy(this.state['keyword']);

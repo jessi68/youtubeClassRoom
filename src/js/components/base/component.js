@@ -3,7 +3,6 @@
 export default class Component {
   constructor({id, initialState = {}, ...props}) {
     this.$element = document.getElementById(id);
-    console.log(initialState);
     this.state = initialState;
     this.props = props || {};
    

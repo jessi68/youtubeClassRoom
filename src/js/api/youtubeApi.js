@@ -25,7 +25,6 @@ export const rateVideo = async (videoId, rating) => {
   } catch(err) {
     return false
   }
-
 }
 
 export const getVideos = async (keyWord, nextPageToken) => {

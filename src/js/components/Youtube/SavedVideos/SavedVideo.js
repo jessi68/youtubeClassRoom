@@ -12,8 +12,6 @@ export default class SavedVideo {
         this.index = index;
         this._isSeenByUser = false;
         this.deleted = false;
-        this.$isOkay = new Component({});
-
     }
 
     isSeenByUser = () => {
@@ -59,6 +57,5 @@ export default class SavedVideo {
         addEventFunction(checked, "click", this.seenByUser);
         let deleteButton = foundByClassName(metaDataParentView, ".trash");
         addEventFunction(deleteButton, "click", this.deleteItself);
-        console.log(deleteButton);
     }
 }

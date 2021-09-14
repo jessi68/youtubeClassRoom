@@ -16,12 +16,10 @@ export class SavedVideos extends Component {
     }
 
     showOnlySeenVideos = () => {
-         console.log(this.savedVideoView);
          this.render(this.savedVideoView.filter((video) => video.isSeenByUser()));
     }
 
     showOnlyUnseenVideos = () => {
-        console.log(this.savedVideoView);
         this.render(this.savedVideoView.filter((video) => !video.isSeenByUser()));
     }
 
@@ -32,7 +30,6 @@ export class SavedVideos extends Component {
         
         this.$element.insertAdjacentHTML('beforeend', newVideo.makeNewView());
         newVideo.connectViewToFunction();
-        console.log(this.$element);
         this.state["savedNumber"] += 1;
     }
 
@@ -43,7 +40,6 @@ export class SavedVideos extends Component {
     }
 
     render(videoViews = []) {
-        console.log(videoViews);
         this.hideItself();
         if(videoViews.length === 0) {
             this.$element.innerHTML = "<h1>영상이 없습니다.</h1>";
@@ -51,7 +47,6 @@ export class SavedVideos extends Component {
         }
 
         videoViews.forEach((video) => {
-            console.log(video);
             video.showItself();
         });
    

@@ -10,7 +10,6 @@ export let $ = (id) => {
 
 export let addEventFunction = (node, eventType, func) => {
     node.addEventListener(eventType, func);
-    console.log(node);
 }
 
 export let removeSpecificClass = (node, className) => {
