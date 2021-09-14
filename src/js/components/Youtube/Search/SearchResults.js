@@ -55,6 +55,7 @@ export default class SearchResults extends Component {
 
     saveVideo = (videoId, video, saveButton) => {
       saveItem(videoId, JSON.stringify(video));
+      print(video);
       document.getElementById("saved-video-num").innerHTML = `저장된 영상 개수: ${getSavedItemNumber()}`;
       this.notifyAllObservers(video);
       saveButton.remove();

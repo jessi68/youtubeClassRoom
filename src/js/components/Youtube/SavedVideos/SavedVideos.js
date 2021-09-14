@@ -10,6 +10,7 @@ export class SavedVideos extends Component {
     }
 
     observe(video) {
+        print(video);
         let newVideo = new SavedVideo(video, this.state["savedNumber"]);
         this.savedVideoView.push(newVideo);
         this.addNewVideo(newVideo);
