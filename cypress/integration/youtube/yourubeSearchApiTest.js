@@ -1,6 +1,10 @@
-import { getVideos } from "../../../src/js/api/youtubeApi"
 
-describe('유튜브 동영상 검색 관련 기능들', () => {
+
+import { getVideos, rateVideo } from "../../../src/js/api/youtubeApi"
+
+describe('유튜브 동영상 api 관련 기능들', () => {
+  const YOUTUBE_VIDEO_ID_EXAMPLE = "n6-cHvHJCIw";
+
     beforeEach(() => {
       // Cypress starts out with a blank slate for each test
       // so we must tell it to visit our website with the `cy.visit()` command.
@@ -20,6 +24,12 @@ describe('유튜브 동영상 검색 관련 기능들', () => {
      
 
     })
+
+    it('특정 영상을 좋아요 누르는 api 실행이 잘 된다', () => {
+      
+      let isSucceed = rateVideo(YOUTUBE_VIDEO_ID_EXAMPLE, "like");
+      expect(isSucceed, true);
+    })
  
 
-  })
+    });
